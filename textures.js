@@ -1,30 +1,17 @@
-(function () {
-    "use strict";
+(function() {
+    const pack = "textures.zip";
 
-    const TEXTURE_PACK = "textures.zip";
+    window.addEventListener("load", () => {
+        console.log("[PACK] Starting loader");
 
-    // Eaglercraft options
-    window.eaglercraftXOpts = window.eaglercraftXOpts || {};
-
-    window.eaglercraftXOpts.resourcePackURL = TEXTURE_PACK;
-
-    console.log("[Texture Pack] Set:", TEXTURE_PACK);
-
-    // Optional: preload the ZIP so it is available
-    fetch(TEXTURE_PACK)
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("Texture pack not found");
-            }
-
-            return response.arrayBuffer();
-        })
-        .then(function (data) {
-            window.texturePackData = new Uint8Array(data);
-            console.log("[Texture Pack] Loaded");
-        })
-        .catch(function (error) {
-            console.error("[Texture Pack] Failed:", error);
-        });
-
+        fetch(pack)
+            .then(r => r.arrayBuffer())
+            .then(data => {
+                window.eaglercraftResourcePack = new Uint8Array(data);
+                console.log("[PACK] ZIP loaded");
+            })
+            .catch(err => {
+                console.error("[PACK] Error:", err);
+            });
+    });
 })();
