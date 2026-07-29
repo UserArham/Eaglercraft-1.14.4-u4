@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<!--
+
+This file is from 05/17/2026
+
+-->
+
+<html style="width:100%;height:100%;background-color:black;">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eaglercraft 1.14</title>
+
+<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.14">
+
+
+<style>
+
+html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+}
+
+
+#game_frame {
+    background:white;
+}
+
+
+#launch_countdown_screen {
+
+    width:100%;
+    height:100%;
+
+    font-family:sans-serif;
+
+    display:flex;
+
+    align-items:center;
+
+    user-select:none;
+
+}
+
+
+button {
+
+    cursor:pointer;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body id="game_frame"
+style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:white;">
+
+
+<div id="launch_countdown_screen">
+
+
+<div style="margin:auto;text-align:center;">
+
+
+<h1>This file is from 05/17/2026</h1>
+
+
+<h2>
+Game will launch in
+<span id="launchCountdownNumber">5</span>...
+</h2>
+
+
+<div style="
+border:2px solid black;
+width:100%;
+height:15px;
+padding:1px;
+margin-bottom:20vh;
+">
+
+
+<div id="launchCountdownProgress"
+style="
+background-color:#555555;
+width:0%;
+height:100%;
+">
+</div>
+
+
+</div>
+
+
+<p style="margin-top:30px;">
+
+<button id="skipCountdown" autofocus>
+Skip Countdown
+</button>
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+"use strict";
+
+
+var launchInterval = -1;
+
+var launchCounter = 1;
+
+var launchCountdownNumberElement = null;
+
+var launchCountdownProgressElement = null;
+
+var launchSkipCountdown = false;
+
+
+
+var launchTick = function(){
+
+
+    launchCountdownNumberElement.innerText =
+    "" + Math.floor(6.0 - launchCounter * 0.06);
+
+
+
+    launchCountdownProgressElement.style.width =
+    "" + launchCounter + "%";
+
+
+
+    if(++launchCounter > 100 || launchSkipCountdown){
+
+
+        clearInterval(launchInterval);
+
+
+        setTimeout(function(){
+
+
+            window.location.href = "index.html";
+
+
+        },50);
+
+
+    }
+
+
+};
+
+
+
+window.addEventListener("load", function(){
+
+
+    launchCountdownNumberElement =
+    document.getElementById("launchCountdownNumber");
+
+
+    launchCountdownProgressElement =
+    document.getElementById("launchCountdownProgress");
+
+
+
+    launchInterval =
+    setInterval(launchTick,50);
+
+
+
+    document.getElementById("skipCountdown")
+    .addEventListener("click",function(){
+
+
+        launchSkipCountdown = true;
+
+
+    });
+
+
+
+    document.getElementById("bootMenu")
+    .addEventListener("click",function(){
+
+
+        launchSkipCountdown = true;
+
+
+    });
+
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
