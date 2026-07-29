@@ -1,42 +1,266 @@
 <!DOCTYPE html>
 <html lang="und" style="width:100%;height:100%;background-color:black;">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-		<meta name="description" content="Eaglercraft 1.14 test directory HTML page">
-		<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.12, 1.12.2">
-		<title>Eaglercraft 1.14.4</title>
-		<meta property="og:locale" content="en-US">
-		<meta property="og:type" content="website">
-		<meta property="og:title" content="Eaglercraft 1.14.4">
-		<meta property="og:description" content="test directory HTML page">
-		<link type="image/png" rel="shortcut icon" href="favicon.png">
-		<script type="text/javascript" src="textures.js"></script>
-		<script type="text/javascript" src="u5-new.js"></script>
-		<script type="text/javascript">
-			"use strict";
-			window.addEventListener("load", function() {
-				if(window.location.href.indexOf("file:") === 0) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
-					var relayId = Math.floor(Math.random() * 3);
-					window.eaglercraftXOpts = {
-						demoMode: false,
-						container: "game_frame",
-						assetsURI: "assets.epk",
-						localesURI: "lang/",
-						worldsDB: "worlds",
-						servers: [
-							{ addr: "wss://play.zelz.net", name: "ZelzNet" },
-							{ addr: "wss://mc.arch.lol", name: "ArchMC" },
-							{ addr: "wss://arch.mc", name: "another ArchMC server" }
-    						]
-					};
-					main();
-				}
-			});
-		</script>
-	</head>
-	<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
-	</body>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+<meta name="description" content="Eaglercraft 1.14 test directory HTML page">
+
+<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.12, 1.12.2">
+
+<title>Eaglercraft 1.14.4</title>
+
+<meta property="og:locale" content="en-US">
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Eaglercraft 1.14.4">
+
+<meta property="og:description" content="test directory HTML page">
+
+<link type="image/png" rel="shortcut icon" href="favicon.png">
+
+
+<style>
+
+#launch_screen {
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:white;
+
+display:flex;
+
+align-items:center;
+
+user-select:none;
+
+font-family:sans-serif;
+
+z-index:9999;
+
+}
+
+
+.launch_box {
+
+margin:auto;
+
+text-align:center;
+
+}
+
+
+#progress {
+
+border:2px solid black;
+
+width:300px;
+
+height:15px;
+
+padding:1px;
+
+}
+
+
+#progress_bar {
+
+background:#555;
+
+height:100%;
+
+width:0%;
+
+}
+
+
+button {
+
+cursor:pointer;
+
+}
+
+
+</style>
+
+
+
+<script type="text/javascript" src="textures.js"></script>
+
+<script type="text/javascript" src="u5-new.js"></script>
+
+
+<script type="text/javascript">
+
+"use strict";
+
+
+window.addEventListener("load", function(){
+
+
+if(window.location.href.indexOf("file:") === 0) {
+
+
+alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+
+
+}else{
+
+
+var relayId = Math.floor(Math.random() * 3);
+
+
+
+window.eaglercraftXOpts = {
+
+demoMode:false,
+
+container:"game_frame",
+
+assetsURI:"assets.epk",
+
+localesURI:"lang/",
+
+worldsDB:"worlds",
+
+servers:[
+
+{addr:"wss://play.zelz.net",name:"ZelzNet"},
+
+{addr:"wss://mc.arch.lol",name:"ArchMC"},
+
+{addr:"wss://arch.mc",name:"another ArchMC server"}
+
+]
+
+};
+
+
+
+var counter = 1;
+
+
+var number =
+document.getElementById("countdown");
+
+
+var bar =
+document.getElementById("progress_bar");
+
+
+var timer = setInterval(function(){
+
+
+number.innerText =
+Math.floor(6 - counter * 0.06);
+
+
+bar.style.width =
+counter + "%";
+
+
+counter++;
+
+
+if(counter > 100){
+
+
+clearInterval(timer);
+
+
+document.getElementById("launch_screen").remove();
+
+
+main();
+
+
+}
+
+
+},50);
+
+
+
+document.getElementById("skip").onclick=function(){
+
+
+clearInterval(timer);
+
+
+document.getElementById("launch_screen").remove();
+
+
+main();
+
+
+};
+
+
+
+}
+
+
+});
+
+
+</script>
+
+
+</head>
+
+
+
+<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
+
+
+<div id="launch_screen">
+
+
+<div class="launch_box">
+
+
+<h1>
+This file is from 05/17/2026
+</h1>
+
+
+<h2>
+Game will launch in <span id="countdown">5</span>...
+</h2>
+
+
+<div id="progress">
+
+<div id="progress_bar"></div>
+
+</div>
+
+
+<p>
+
+<button id="skip">
+Skip Countdown
+</button>
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</body>
+
 </html>
