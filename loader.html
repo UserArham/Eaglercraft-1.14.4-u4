@@ -14,9 +14,7 @@ This file is from 05/17/2026
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Eaglercraft 1.14</title>
-
-<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.14">
+<title>This file is from 05/17/2026</title>
 
 
 <style>
@@ -26,11 +24,8 @@ html, body {
     height:100%;
     margin:0;
     overflow:hidden;
-}
-
-
-#game_frame {
-    background:white;
+    background:black;
+    font-family:sans-serif;
 }
 
 
@@ -38,8 +33,6 @@ html, body {
 
     width:100%;
     height:100%;
-
-    font-family:sans-serif;
 
     display:flex;
 
@@ -50,12 +43,60 @@ html, body {
 }
 
 
+.launch_box {
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+
+h1 {
+
+    color:black;
+
+}
+
+
+h2 {
+
+    color:black;
+
+}
+
+
+.progress {
+
+    border:2px solid black;
+
+    width:300px;
+
+    height:15px;
+
+    padding:1px;
+
+    margin:auto;
+
+}
+
+
+#launchCountdownProgress {
+
+    background:#555;
+
+    width:0%;
+
+    height:100%;
+
+}
+
+
 button {
 
     cursor:pointer;
 
 }
-
 
 </style>
 
@@ -63,17 +104,18 @@ button {
 </head>
 
 
-<body id="game_frame"
-style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:white;">
+<body id="game_frame">
 
 
 <div id="launch_countdown_screen">
 
 
-<div style="margin:auto;text-align:center;">
+<div class="launch_box">
 
 
-<h1>This file is from 05/17/2026</h1>
+<h1>
+This file is from 05/17/2026
+</h1>
 
 
 <h2>
@@ -82,23 +124,9 @@ Game will launch in
 </h2>
 
 
-<div style="
-border:2px solid black;
-width:100%;
-height:15px;
-padding:1px;
-margin-bottom:20vh;
-">
+<div class="progress">
 
-
-<div id="launchCountdownProgress"
-style="
-background-color:#555555;
-width:0%;
-height:100%;
-">
-</div>
-
+<div id="launchCountdownProgress"></div>
 
 </div>
 
@@ -107,6 +135,12 @@ height:100%;
 
 <button id="skipCountdown" autofocus>
 Skip Countdown
+</button>
+
+&emsp;
+
+<button id="bootMenu">
+Enter Boot Menu
 </button>
 
 </p>
@@ -128,86 +162,150 @@ var launchInterval = -1;
 
 var launchCounter = 1;
 
+var launchSkipCountdown = false;
+
+
 var launchCountdownNumberElement = null;
 
 var launchCountdownProgressElement = null;
 
-var launchSkipCountdown = false;
 
 
+function launchTick(){
 
-var launchTick = function(){
+
+    if(
+        !launchCountdownNumberElement ||
+        !launchCountdownProgressElement
+    ){
+        return;
+    }
 
 
     launchCountdownNumberElement.innerText =
-    "" + Math.floor(6.0 - launchCounter * 0.06);
+        "" + Math.floor(6.0 - launchCounter * 0.06);
 
 
 
     launchCountdownProgressElement.style.width =
-    "" + launchCounter + "%";
+        launchCounter + "%";
 
 
 
-    if(++launchCounter > 100 || launchSkipCountdown){
+    launchCounter++;
+
+
+
+    if(
+        launchCounter > 100 ||
+        launchSkipCountdown
+    ){
 
 
         clearInterval(launchInterval);
 
-
-        setTimeout(function(){
-
-
-            window.location.href = "index.html";
+        launchInterval = -1;
 
 
-        },50);
+
+        window.location.replace(
+            "index.html"
+        );
 
 
     }
 
-
-};
-
+}
 
 
-window.addEventListener("load", function(){
+
+window.addEventListener(
+"load",
+function(){
 
 
     launchCountdownNumberElement =
-    document.getElementById("launchCountdownNumber");
+        document.getElementById(
+            "launchCountdownNumber"
+        );
 
 
     launchCountdownProgressElement =
-    document.getElementById("launchCountdownProgress");
+        document.getElementById(
+            "launchCountdownProgress"
+        );
 
 
 
     launchInterval =
-    setInterval(launchTick,50);
+        setInterval(
+            launchTick,
+            50
+        );
 
 
 
-    document.getElementById("skipCountdown")
-    .addEventListener("click",function(){
-
-
-        launchSkipCountdown = true;
-
-
-    });
-
-
-
-    document.getElementById("bootMenu")
-    .addEventListener("click",function(){
+    document.getElementById(
+        "skipCountdown"
+    ).onclick=function(){
 
 
         launchSkipCountdown = true;
 
 
-    });
+    };
 
+
+
+    document.getElementById(
+        "bootMenu"
+    ).onclick=function(){
+
+
+        launchSkipCountdown = true;
+
+
+    };
+
+
+});
+
+
+
+
+// Stop timer when leaving page
+window.addEventListener(
+"pagehide",
+function(){
+
+
+    if(launchInterval !== -1){
+
+        clearInterval(
+            launchInterval
+        );
+
+        launchInterval = -1;
+
+    }
+
+
+});
+
+
+
+
+// Fix browser back-cache freezing
+window.addEventListener(
+"pageshow",
+function(event){
+
+
+    if(event.persisted){
+
+        window.location.reload();
+
+    }
 
 
 });
