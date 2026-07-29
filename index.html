@@ -15,13 +15,11 @@
 
 <link type="image/png" rel="shortcut icon" href="favicon.png">
 
-
 <style>
 
 #launch_screen {
 
     position:fixed;
-
     top:0;
     left:0;
 
@@ -44,7 +42,6 @@
 
 }
 
-
 .launch_box {
 
     text-align:center;
@@ -53,13 +50,11 @@
 
 }
 
-
 .launch_box h1 {
 
     margin-bottom:25px;
 
 }
-
 
 .launch_text {
 
@@ -67,8 +62,6 @@
 
 }
 
-
-/* Main loading bar */
 
 #progress {
 
@@ -96,39 +89,22 @@
 }
 
 
-/* GitHub bar */
-
-#github_bar {
-
-    border:2px solid black;
-
-    width:300px;
-
-    height:15px;
-
-    padding:1px;
-
-    margin:10px auto;
-
-}
-
-
-#github_fill {
-
-    background:#333333;
-
-    width:100%;
-
-    height:100%;
-
-}
-
-
 .github_text a {
 
     color:black;
 
     font-weight:bold;
+
+    text-decoration:none;
+
+}
+
+
+.github_text span {
+
+    color:#8b0000;
+
+    text-decoration:underline;
 
 }
 
@@ -151,49 +127,44 @@ button {
 
 "use strict";
 
-
 window.addEventListener("load", function(){
-
 
 if(window.location.href.indexOf("file:") === 0){
 
-
 alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-
 
 }else{
 
-
 window.eaglercraftXOpts = {
 
-    demoMode:false,
+demoMode:false,
 
-    container:"game_frame",
+container:"game_frame",
 
-    assetsURI:"assets.epk",
+assetsURI:"assets.epk",
 
-    localesURI:"lang/",
+localesURI:"lang/",
 
-    worldsDB:"worlds",
+worldsDB:"worlds",
 
-    servers:[
+servers:[
 
-        {
-            addr:"wss://play.zelz.net",
-            name:"ZelzNet"
-        },
+{
+addr:"wss://play.zelz.net",
+name:"ZelzNet"
+},
 
-        {
-            addr:"wss://mc.arch.lol",
-            name:"ArchMC"
-        },
+{
+addr:"wss://mc.arch.lol",
+name:"ArchMC"
+},
 
-        {
-            addr:"wss://arch.mc",
-            name:"another ArchMC server"
-        }
+{
+addr:"wss://arch.mc",
+name:"another ArchMC server"
+}
 
-    ]
+]
 
 };
 
@@ -213,7 +184,6 @@ document.getElementById("progress_bar");
 
 var timer=setInterval(function(){
 
-
 countdown.innerText =
 Math.floor(6 - launchCounter * 0.06);
 
@@ -227,21 +197,15 @@ launchCounter++;
 
 if(launchCounter > 100 || launchSkipCountdown){
 
-
 clearInterval(timer);
-
 
 document.getElementById("launch_screen").remove();
 
-
 main();
-
 
 }
 
-
 },50);
-
 
 
 document.getElementById("skip").onclick=function(){
@@ -250,15 +214,15 @@ launchSkipCountdown=true;
 
 };
 
-
 }
-
 
 });
 
 </script>
 
 </head>
+
+
 <body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
 
 
@@ -273,18 +237,11 @@ This file is from 06/14/2026
 </h1>
 
 
-<div id="github_bar">
-
-<div id="github_fill"></div>
-
-</div>
-
-
 <p class="github_text">
 
 <a href="https://github.com/UserArham" target="_blank">
 
-or you can check my GitHub repo
+or you can check my <span>GitHub repo</span>
 
 </a>
 
@@ -300,13 +257,11 @@ Game will launch in
 </h2>
 
 
-
 <div id="progress">
 
 <div id="progress_bar"></div>
 
 </div>
-
 
 
 <p>
@@ -322,11 +277,9 @@ Skip Countdown
 
 </div>
 
-
 </div>
 
 
 </body>
-
 
 </html>
