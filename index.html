@@ -69,9 +69,9 @@
 }
 
 
-.launch_box h2 {
+.launch_text {
 
-    font-weight:normal;
+    font-weight:bold;
 
 }
 
@@ -173,6 +173,8 @@ window.addEventListener("load", function() {
 
         var launchCounter = 1;
 
+        var launchSkipCountdown = false;
+
 
         var countdown =
             document.getElementById("countdown");
@@ -180,9 +182,6 @@ window.addEventListener("load", function() {
 
         var progress =
             document.getElementById("progress_bar");
-
-
-        var skip = false;
 
 
 
@@ -203,7 +202,7 @@ window.addEventListener("load", function() {
 
 
 
-            if(launchCounter > 100 || skip) {
+            if(launchCounter > 100 || launchSkipCountdown) {
 
 
                 clearInterval(timer);
@@ -228,7 +227,7 @@ window.addEventListener("load", function() {
         document.getElementById("skip").onclick=function(){
 
 
-            skip = true;
+            launchSkipCountdown = true;
 
 
         };
@@ -259,7 +258,7 @@ This file is from 05/17/2026
 </h1>
 
 
-<h2>
+<h2 class="launch_text">
 Game will launch in
 <span id="countdown">5</span>...
 </h2>
