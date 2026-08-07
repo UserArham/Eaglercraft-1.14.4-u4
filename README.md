@@ -1,18 +1,14 @@
-## Eaglercraft 1.14.4
+# EaglercraftZ 1.14.4-u7 Ultimate
 
-Upgraded from 1.8 to 1.12.2!
+## Already compiled using Java 17!
 
-## What I did
+This is a EaglercraftZ 1.14.4 build which has new bug fixes which happened from u6. If you haven't heard it, please go buy Minecraft at [the official Minecraft page](minecraft.net).
 
-I did 
+## What was fixed:
 
-- overhaul the textures to be polished
-- fixed the glitches from showing by the bow and arrow
+- Fixing crosshair issues
+- Fixed wolf pathfinding which made wolfves untamed
 
-## NOTE TO EVERYBODY!
+## Note to players:
 
-<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/2616c45c-7592-4782-8b4d-fa44e2c6467b" />
-
-
-If the textures are not polished properly or textures failing, download `textures.zip` now. 
-
+If the textures fail, please download `textures.zip`.
