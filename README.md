@@ -7,7 +7,7 @@ This is a EaglercraftZ 1.14.4 build which has new bug fixes which happened from 
 ## What was fixed:
 
 - Fixing crosshair issues
-- Fixed wolf pathfinding which made wolfves untamed
+- Fixed wolf pathfinding which made wolves untamed
 
 ## Note to players:
 
