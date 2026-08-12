@@ -1,4 +1,4 @@
-# EaglercraftZ 1.14.4-u7 Ultimate
+# EaglercraftZ 1.14.4-u7.5 Advanced
 
 ## Already compiled using Java 17!
 
@@ -6,8 +6,8 @@ This is a EaglercraftZ 1.14.4 build which has new bug fixes which happened from 
 
 ## What was fixed:
 
-- Fixing crosshair issues
-- Fixed wolf pathfinding which made wolves untamed
+- Fixed 500+ bugs
+- Fixed a critical bug where the title screen, splash text, and panorama would dissappear
 
 ## Note to players:
 
