@@ -1,4 +1,4 @@
-# EaglercraftZ 1.14.4-u7.5 Advanced
+# EaglercraftZ 1.14.4-u8 Release Candidate
 
 ## Already compiled using Java 17!
 
@@ -6,8 +6,8 @@ This is a EaglercraftZ 1.14.4 build which has new bug fixes which happened from 
 
 ## What was fixed:
 
-- Fixed 500+ bugs
-- Fixed a critical bug where the title screen, splash text, and panorama would dissappear
+- Fixed more bug
+- Fixed a critical bug where wolves die randomly
 
 ## Note to players:
 
